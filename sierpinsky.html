@@ -1,0 +1,65 @@
+<html>
+
+<body>
+
+<button onclick="myvar = setInterval(calistir, 0.001)"> ÇALIŞTIR</button>
+ <br />
+<canvas height="400" id="yuzey" width="600"></canvas>
+
+<script type="text/javascript">
+ var c = document.getElementById("yuzey");
+ var ctx = c.getContext("2d");
+
+ ctx.beginPath();
+ ctx.arc(300,5,5,0*Math.PI,2*Math.PI);
+ ctx.fillStyle = "red";
+ ctx.fill();
+ ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(5,395,5,0*Math.PI,2*Math.PI);
+    ctx.fillStyle = "red";
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(595,395,5,0*Math.PI,2*Math.PI);
+    ctx.fillStyle = "red";
+    ctx.fill();
+    ctx.stroke();
+
+    var i=0;
+    var x,y,xn,yn,rast;
+    x=300;
+    y=5;
+
+    function calistir(){     
+     
+      rast = Math.floor(Math.random()*3)+1;
+      if(rast==1){
+       xn = Math.floor((x + 300)/2);
+       yn = Math.floor((y + 5)/2);
+      } else if(rast==2){
+       xn = Math.floor((x + 5)/2);
+       yn = Math.floor((y + 395)/2);
+      } else if(rast==3){
+       xn = Math.floor((x + 595)/2);
+       yn = Math.floor((y + 395)/2);
+      }
+      
+      ctx.beginPath();
+      ctx.arc(xn,yn,2,0*Math.PI,2*Math.PI);
+      ctx.fillStyle = "red";
+      ctx.fill();
+      ctx.stroke();
+      x=xn;
+      y=yn;
+      i++;
+      if(i==100000) clearInterval(myvar);
+     
+    }
+
+</script>
+</body>
+
+</html>
